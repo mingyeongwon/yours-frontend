@@ -13,6 +13,7 @@
           v-for="(tab, index) in leftTabs"
           :key="index"
           class="me-3 cursor-pointer"
+          :class="{ active: tab === selectedTab }"
         >
           {{ tab }}
         </div>
@@ -23,8 +24,24 @@
   </div>
 </template>
 
-<script>
-impo
+<script setup>
+import { ref } from 'vue'
+
+const props = defineProps({
+  selectedTab: String
+})
+
+const leftTabs = ref(['전체', '고양이', '강아지'])
+
 </script>
 
-<style scoped></style>
+<style scoped>
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+</style>

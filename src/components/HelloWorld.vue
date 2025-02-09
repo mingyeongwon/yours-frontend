@@ -1,42 +1,20 @@
 <template>
   <div>
     <!-- 헤더 영역 -->
-    <div>
-      <h5 class="fw-bold">유어스</h5>
-    </div>
-
-    <!-- 탭 메뉴 영역 -->
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="d-flex">
-        <div class="me-3">전체</div>
-        <div class="me-3">고양이</div>
-        <div>강아지</div>
-      </div>
-      <div>문의하기</div>
-    </div>
+    <HeaderTabs/>
 
     <!-- 카드 영역 -->
-    <!-- 'gy-4' 클래스로 수직 간격을 추가합니다 -->
-    <div class="row mt-4 gy-4">
-      <!-- 카드 1 -->
-      <div class="col-md-3" v-for="allCard in allCards" :key="allCard.title">
-        <div class="card rounded-2">
-          <img
-            :src="allCard.imageSrc"
-            class="card-img-top rounded-2"
-            :alt="allCard.title"
-          />
-          <div class="card-body">
-            <p class="card-text">{{ allCard.title }}</p>
-          </div>
-        </div>
-      </div>
+    <div>
+      <CardList/>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
+import HeaderTabs from '../components/HeaderTabs.vue';
+import CardList from '../components/CardList.vue'
+
 
 const allCards = ref([
   {
